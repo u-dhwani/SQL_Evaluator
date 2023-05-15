@@ -61,7 +61,7 @@
    <%--  <% String name=request.getParameter("studentid");%>
     <h2 style="text-align:center; font-weight:bold;">Welcome, <%=name%></h2> --%>
     
-    <img src="images/lib-db.jpg" alt="library database">
+    <img src="images/lib-db.jpeg" alt="library database">
     
         <div class="title">
             Question 1
