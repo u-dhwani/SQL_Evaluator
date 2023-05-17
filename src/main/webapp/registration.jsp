@@ -17,6 +17,8 @@
 
 <input type="hidden" id="status" value="<%= request.getAttribute("status")%>">
 	<div class="main">
+	<h1 style="color: black; font-weight: bold; font-family: 'Times New Roman', Times, serif; text-align: center">IT-214 DATABASE MANAGEMENT SYSTEM</h1>
+	
 
 		<!-- Sign up form -->
 		<section class="signup">

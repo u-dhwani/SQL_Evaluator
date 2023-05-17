@@ -38,28 +38,29 @@ public class Quiz_Question extends HttpServlet {
 			e.printStackTrace();
 		}
 		Connection con = null;
+		Statement s = null;
 		try {
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/aliens?useSSL=false","root","Sdkk@1702");
+			s = con.createStatement();
+			
+//			String student_score_zero = String.format("Insert into student_score (studid, %s) values ('%s', %d) ON DUPLICATE KEY UPDATE %s = %d", 0, name, 0, 0, 0);
+//    	    s.execute(student_score_zero);
+			
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		
 		RequestDispatcher dispatcher = null;
-		Statement s = null;
-		try {
-			s = con.createStatement();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
+		
 		String admin_answer,qno; 
 		
 		if(student_answer_1!=null) {
 			qno="q1_score";
 			String admin_table="CREATE TABLE IF NOT EXISTS dhwani_admin(BID INTEGER,TITLE VARCHAR(20),PUBNAME VARCHAR(20),"
 					+ "ANAME VARCHAR(20),NOOFCOPIES INTEGER);";
-			admin_answer="SELECT B.BID, B.TITLE, B.PUBNAME, A.ANAME,C.NOOFCOPIES FROM BOOK B, BOOK_AUTHORS A, BOOK_COPIES C, LIBRARY_BRANCH  L WHERE B.BID=A.BID AND B.BID=C.BID AND L.BRANCHID=C.BRANCHID;\r\n"
+			admin_answer="SELECT B.BID, B.TITLE, B.PUBNAME, A.ANAME,C.NOOFCOPIES FROM BOOK B, BOOK_AUTHORS A, BOOK_COPIES C, LIBRARY_BRANCH L WHERE B.BID=A.BID AND B.BID=C.BID AND L.BRANCHID=C.BRANCHID;\r\n"
 					+ "";
 			String student_table_create="CREATE TABLE IF NOT EXISTS "+name+" AS SELECT * FROM dhwani_admin;";
 			String extra6="Truncate table "+name;
@@ -162,18 +163,12 @@ public class Quiz_Question extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-//			admin_answer="select * from student where studid=2";
-//			qno="q3_score";
-//			String output_admin_stu="";
-//			String output="";
-//			String student_table_create="CREATE TABLE "+name+" AS SELECT * FROM dhwani_admin;";
-//			
-//			evaluation(qno,student_answer_3,name,admin_answer,output_admin_stu,output);
+
 		}
 		if(student_answer_4!=null) {
 			qno="q4_score";
 			String admin_table="CREATE TABLE IF NOT EXISTS dhwani_admin(BID INTEGER,TITLE VARCHAR(20),NOOFCOPIES INTEGER,ADDRESS VARCHAR(20));";
-			admin_answer="select book.bid,title,noofcopies,address from library_branch join book_copies join book where library_branch.branchid=book_copies.branchid and book_copies.bid=book.bid and bname=\"RR NAGAR\";\r\n"
+			admin_answer="select book.bid,title,noofcopies,address from library_branch join book_copies join book where library_branch.branchid=book_copies.branchid and book_copies.bid=book.bid and bname='RR NAGAR';\r\n"
 					+ "";
 			String student_table_create="CREATE TABLE IF NOT EXISTS "+name+" AS SELECT * FROM dhwani_admin;";
 			String extra6="Truncate table "+name;
@@ -224,7 +219,7 @@ public class Quiz_Question extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-    		String output="Select * from dhwani_admin natural join "+name+" where dhwani_admin.bid = "+name+".bid";
+    		String output="Select * from dhwani_admin natural join "+name+" where dhwani_admin.aname = "+name+".aname";
     		
 			evaluation(qno,student_answer_5,name,admin_answer,output_admin_stu,output);
 			String extra="drop table dhwani_admin";
@@ -251,7 +246,7 @@ public class Quiz_Question extends HttpServlet {
 			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/aliens?useSSL=false","root","Sdkk@1702");
 			
 			Statement st = con.createStatement();
-			
+			 
 			String que_no="q1_score";
             String student_score_ini = String.format("Insert into student_score (studid, %s) values ('%s', %d) ON DUPLICATE KEY UPDATE %s = %d", que_no, name, 0, qno, 0);
 	    	st.execute(student_score_ini);	
@@ -307,8 +302,7 @@ public class Quiz_Question extends HttpServlet {
             Statement stmt = con.createStatement();
             String check_key = String.format("Select count(*) from student_score where studid='%s'", name);
             ResultSet r_set = stmt.executeQuery(check_key);
-            
-            
+           
             if (r_set.next() && r_set.getInt(1) > 0) {
             	if(cnt_admin==cnt_result && cnt_student==cnt_result) {
         	    	int val=10;

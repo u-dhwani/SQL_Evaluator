@@ -40,15 +40,15 @@
 	<div class="full-page">
         <div class="navbar">
           <div>
-              	<a href="index.jsp"><img src="images/daiict_logo.png" style="height: 150px;"></a>
+              	<a href="index.jsp"><img src="images/daiict_logo.png" style="height: 100px;"></a>
           </div>
-            <div style="margin-left: 350px;">
-                <a href='website.html' style="color: black; font-weight: bold;">IT-214 DATABASE MANAGEMENT SYSTEM</a>
+            <div style="margin-left: 280px;">
+                <a href='website.html' style="color: black; font-weight: bold; text-align: center">IT-214 DATABASE MANAGEMENT SYSTEM</a>
                
             </div>
             <nav>
                 <ul id='MenuItems'>
-			<li style="font-weight: bold;"><a href="login.jsp">LOGOUT</a></li>
+			<li style="font-weight: bold;"><a href="login.jsp"><h5>LOGOUT</h5></a></li>
                 </ul>
             </nav>
             
@@ -57,7 +57,7 @@
             <a href="quiz_question.jsp">
             	<button type='submit' id="start_sql" class='submit-btn' 
             		style="width: 500px; height: 100px; background-color: lightblue; font-weight: bolder; margin-top: 10%; 
-            		font-size: xx-large;">START QUIZ
+            		font-size: xx-large;">START TEST
             	</button>
             </a>
     	</div>

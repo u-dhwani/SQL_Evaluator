@@ -61,7 +61,7 @@
    <%--  <% String name=request.getParameter("studentid");%>
     <h2 style="text-align:center; font-weight:bold;">Welcome, <%=name%></h2> --%>
     
-    <img src="images/lib-db.jpg" alt="library database">
+    <img src="images/lib-db.jpeg" alt="library database">
     
         <div class="title">
             Question 1
@@ -70,7 +70,7 @@
             <div class="timerbox">Time Left: <span></span></div>
         </div>
         <div class="questionbox">
-            Retrieve details of all books in the library : id, title, name of publisher, authors, number of copies in each branch, etc.
+            Retrieve details of all books in the library : Book id, title, name of publisher, authors, number of copies.
         </div>
         <br>
         <form method="post" action="quiz_question" >
